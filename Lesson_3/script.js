@@ -72,11 +72,11 @@ checkSavings();
 
 function chooseOptExpenses() {
 	for (let i = 0; i < 3; i++) {
-		let optionally = prompt("Статья необязательных расходов?");
+		let chooseOptExpenses = prompt("Статья необязательных расходов?", '');
 
-		if (optionally != null && optionally != '') {
+		if (chooseOptExpenses != null && chooseOptExpenses != '') {
 			console.log("done");
-			appData.optionalExpenses = optionally;
+			appData.optionalExpenses[i] = chooseOptExpenses;
 		} else {
 			i--;
 		}
