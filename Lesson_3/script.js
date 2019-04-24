@@ -42,7 +42,7 @@ function detectDayBudget(){
 
 	alert("Ежедневный бюджет: " + appData.moneyPerDay);
 }
-detectDayBudget()
+detectDayBudget();
 
 
 function detectLevel() {
