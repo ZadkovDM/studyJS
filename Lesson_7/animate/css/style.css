@@ -1,0 +1,15 @@
+.wrapper {
+  height: 150px;
+  width: 550px;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.box {
+  height: 150px;
+  width: 50px;
+  background: red;
+  position: absolute;
+  left: 0;
+}
+/*# sourceMappingURL=style.css.map */
