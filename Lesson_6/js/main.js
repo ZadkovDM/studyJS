@@ -52,6 +52,16 @@ startBtn.addEventListener('click', function() {
 	approveTwo.style.opacity = '';
 });
 
+expensesItem.forEach(function (item, i, arr) {
+	expensesItem[i].addEventListener('input', function () {
+		if (expensesItem[i].value !== '') {
+			approveOne.disabled = false;
+			approveOne.style.opacity = '';
+			console.log('active');
+		}
+	});
+});
+
 approveOne.addEventListener('click', function() {
 	let sum = 0;
 	
@@ -71,14 +81,14 @@ approveOne.addEventListener('click', function() {
 	expensesValue.textContent = sum;
 });
 
-expensesItem.forEach(function (item) {
-	item.addEventListener('input', function () {
-		if (this.value != '') {
-			approveOne.disabled = false;
-			approveOne.style.opacity = '';
-		}
-	});
-});
+// expensesItem.forEach(function (item) {
+// 	item.addEventListener('input', function () {
+// 		if (this.value != '') {
+// 			approveOne.disabled = false;
+// 			approveOne.style.opacity = '';
+// 		}
+// 	});
+// });
 
 approveTwo.addEventListener('click', function() {
 	for (let i = 0; i < optExpenses.length; i++) {
