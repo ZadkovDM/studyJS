@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	info.addEventListener('click', function(event) {
+	info.addEventListener('click', (event) => {
 		let target = event.target;
 		if (target && target.classList.contains('info-header-tab')) {
 			for(let i = 0; i < tab.length; i++) {
@@ -94,13 +94,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		descriptionBtn = document.querySelectorAll('.description-btn'),
 		about = document.getElementById('about');
 
-	more.addEventListener('click', function() {
+	more.addEventListener('click', () => {
 		overlay.style.display = 'block';
 		this.classList.add('more-splash');
 		document.body.style.overflow = 'hidden';
 	});
 
-	close.addEventListener('click', function () {
+	close.addEventListener('click', () => {
 		overlay.style.display = 'none';
 		more.classList.remove('more-splash');
 		descriptionBtn.forEach(function(item) {
@@ -111,23 +111,18 @@ window.addEventListener('DOMContentLoaded', function() {
 
 // Модальные окна "Узнать подробнее"
 
-	about.addEventListener('click', function(event) {
+	about.addEventListener('click', (event) => {
 		if (event.target && (event.target.classList.contains('description-btn') || event.target == more)) {
 			overlay.style.display = 'block';
 			document.body.style.overflow = 'hidden';
 		}
 		if (event.target && event.target.classList.contains('description-btn')) {
-			descriptionBtn.forEach(function(item) {
+			descriptionBtn.forEach((item) => {
 				item.classList.add('more-splash');
 			});
 		} else {
 			more.classList.add('more-splash');
 		}
 	});
-
-	// descriptionBtn[0].addEventListener('click', function() {
-	// 	overlay.style.display = 'block';
-	// 	this.classList.add('more-splash');
-	// });
 
 });
