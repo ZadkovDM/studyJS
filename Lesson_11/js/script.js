@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Таймер
 
-	let deadline = '2019-05-15';
+	let deadline = '2019-07-15';
 
 	function grtTimeRemaining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -107,6 +107,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			item.classList.remove('more-splash');
 		});
 		document.body.style.overflow = '';
+
+		if (form.contains(statusMessage)) {
+			form.removeChild(statusMessage);
+		}
 	});
 
 // Модальные окна "Узнать подробнее"
