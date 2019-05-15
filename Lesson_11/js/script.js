@@ -155,72 +155,114 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		statusMessage.classList.add('status');
 
-	form.addEventListener('submit', (event) => {
-		event.preventDefault();
-		form.appendChild(statusMessage);
+	// Модальное окно
 
-		let request = new XMLHttpRequest();
-		request.open('POST', 'server.php');
-		request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+	function sendForm(form, input) {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			form.appendChild(statusMessage);
 
-		let formData = new FormData(form);
+			let request = new XMLHttpRequest();
+			request.open('POST', 'server.php');
+			request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
-		let obj = {};
-		formData.forEach((value, key) => {
-			obj[key] = value;
-		});
-		let json = JSON.stringify(obj);
+			let formData = new FormData(form);
 
-		request.send(json);
+			let obj = {};
+			formData.forEach((value, key) => {
+				obj[key] = value;
+			});
+			let json = JSON.stringify(obj);
 
-		request.addEventListener('readystatechange', () => {
-			if (request.readyState < 4) {
-				statusMessage.innerHTML = message.loading;
-			} else if(request.readyState === 4 && request.status == 200) {
-				statusMessage.innerHTML = message.success;
-			} else {
-				statusMessage.innerHTML = message.failure;
+			request.send(json);
+
+			request.addEventListener('readystatechange', () => {
+				if (request.readyState < 4) {
+					statusMessage.innerHTML = message.loading;
+				} else if (request.readyState === 4 && request.status == 200) {
+					statusMessage.innerHTML = message.success;
+				} else {
+					statusMessage.innerHTML = message.failure;
+				}
+			});
+
+			for (let i = 0; i < input.length; i++) {
+				input[i].value = '';
 			}
 		});
+	}
 
-		for (let i = 0; i < input.length; i++) {
-			input[i].value = '';
-		}
-	});
+	sendForm(form, input);
+	sendForm(contactForm, contactInput);
 
-	contactForm.addEventListener('submit', function(event){
-		event.preventDefault();
-		contactForm.appendChild(statusMessage);
-		statusMessage.style.marginTop = '10px';
-		statusMessage.style.color = '#fff';
+	// Изначальный вариант
 
-		let request = new XMLHttpRequest();
-		request.open('POST', 'server.php');
-		request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+	// form.addEventListener('submit', (event) => {
+	// 	event.preventDefault();
+	// 	form.appendChild(statusMessage);
 
-		let formData = new FormData(contactForm);
+	// 	let request = new XMLHttpRequest();
+	// 	request.open('POST', 'server.php');
+	// 	request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
-		let obj = {};
-		formData.forEach(function (value, key) {
-			obj[key] = value;
-		});
-		let json = JSON.stringify(obj);
+	// 	let formData = new FormData(form);
 
-		request.send(json);
+	// 	let obj = {};
+	// 	formData.forEach((value, key) => {
+	// 		obj[key] = value;
+	// 	});
+	// 	let json = JSON.stringify(obj);
 
-		request.addEventListener('readystatechange', () => {
-			if (request.readyState < 4) {
-				statusMessage.innerHTML = message.loading;
-			} else if (request.readyState === 4 && request.status == 200) {
-				statusMessage.innerHTML = message.success;
-			} else {
-				statusMessage.innerHTML = message.failure;
-			}
-		});
+	// 	request.send(json);
 
-		for (let i = 0; i < contactInput.length; i++) {
-			contactInput[i].value = '';
-		}
-	});
+	// 	request.addEventListener('readystatechange', () => {
+	// 		if (request.readyState < 4) {
+	// 			statusMessage.innerHTML = message.loading;
+	// 		} else if(request.readyState === 4 && request.status == 200) {
+	// 			statusMessage.innerHTML = message.success;
+	// 		} else {
+	// 			statusMessage.innerHTML = message.failure;
+	// 		}
+	// 	});
+
+	// 	for (let i = 0; i < input.length; i++) {
+	// 		input[i].value = '';
+	// 	}
+	// });
+
+	// contactForm.addEventListener('submit', function(event){
+	// 	event.preventDefault();
+	// 	contactForm.appendChild(statusMessage);
+	// 	statusMessage.style.marginTop = '10px';
+	// 	statusMessage.style.color = '#fff';
+
+	// 	let request = new XMLHttpRequest();
+	// 	request.open('POST', 'server.php');
+	// 	request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+	// 	let formData = new FormData(contactForm);
+
+	// 	let obj = {};
+	// 	formData.forEach(function (value, key) {
+	// 		obj[key] = value;
+	// 	});
+	// 	let json = JSON.stringify(obj);
+
+	// 	request.send(json);
+
+	// 	request.addEventListener('readystatechange', () => {
+	// 		if (request.readyState < 4) {
+	// 			statusMessage.innerHTML = message.loading;
+	// 		} else if (request.readyState === 4 && request.status == 200) {
+	// 			statusMessage.innerHTML = message.success;
+	// 		} else {
+	// 			statusMessage.innerHTML = message.failure;
+	// 		}
+	// 	});
+
+	// 	for (let i = 0; i < contactInput.length; i++) {
+	// 		contactInput[i].value = '';
+	// 	}
+	// });
 });
 
