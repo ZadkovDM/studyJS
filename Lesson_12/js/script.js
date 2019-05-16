@@ -172,6 +172,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 					request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
+					let obj = {};  
+					formData.forEach((value, key) => {
+						obj[key] = value;
+					});
+
+					let data = JSON.stringify(obj);
+
 					request.onreadystatechange = function() {
 						if (request.readyState < 4) {
 							resolve()
@@ -196,9 +203,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			postData(formData)
 				.then(()=> statusMessage.innerHTML = message.loading)
 				.then(()=> {
-					thanksModal.style.display = 'block';
-					mainModal.style.display = 'none';
-					statusMessage.innerHTML = '';
+					statusMessage.innerHTML = message.success;
 				})
 				.catch(()=> statusMessage.innerHTML = message.failure)
 				.then(clearInput)
