@@ -292,7 +292,7 @@ sendForm(contactForm, contactInput);
 			if(this.value==''){
 				totalValue.innerHTML = 0;
 			} else{
-				total = (daysSum+personsSum)*4000;
+				total = (daysSum * personsSum) * 4000;
 				totalValue.innerHTML = total;
 			}
 
@@ -306,7 +306,7 @@ sendForm(contactForm, contactInput);
 		if(this.value==''){
 			totalValue.innerHTML = 0;
 		} else{
-			total = (daysSum+personsSum)*4000;
+			total = (daysSum * personsSum) * 4000;
 			totalValue.innerHTML = total;
 		}
 		
